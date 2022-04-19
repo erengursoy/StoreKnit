@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "MostraNuova-Bold";
+    src: local("MostraNuova-Bold"), url(~assets/font/FontsFree-Net-aa.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Helvetica";
+    src: local("Helvetica"), url(~assets/font/Helvetica-Bold.ttf) format("truetype");
+}
+
+.footer-icons-shadow {
+    filter: drop-shadow(0px 0px 6px rgb(255, 230, 0));
+}
