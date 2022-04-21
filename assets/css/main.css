@@ -1,11 +1,10 @@
 @tailwind base;
-.MostraNuova {
-    font-family: "mostra-nuova";
-}
-
-.Helvetica {
-    font-family: "Helvetica";
-}
-
 @tailwind components;
 @tailwind utilities;
+.brightness-07 {
+    filter: brightness(0.7);
+}
+
+.translate-x-99px {
+    transform: translateX(-99px);
+}

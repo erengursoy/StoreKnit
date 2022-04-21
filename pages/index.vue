@@ -5,12 +5,12 @@
         <h1 class="text-center italic text-5xl text-red-700">StoreKnit</h1>
       </div>
 
-      <div class="menu">
+       <div class="menu">
         <ul class="flex justify-center mt-12 mb-8">
-          <li class="mr-24">Anasayfa</li>
-          <li class="mr-24">Tüm Ürünler</li>
-          <li class="mr-24">Hakkımızda</li>
-          <li>İletişim</li>
+          <li class="mr-24"><a href="/index">Anasayfa</a> </li>
+          <li class="mr-24"><a href="/all-products">Tüm Ürünler</a> </li>
+          <li class="mr-24"><a href="/about">Hakkımızda</a> </li>
+          <li><a href="/contact">İletişim</a> </li>
         </ul>
       </div>
     </div>
@@ -25,7 +25,7 @@
         <h1 class="tracking-widest">EN SEVİLENLER</h1>
         <div class="w-5 h-3px bg-black inline-flex"></div>
       </div>
-      
+
       <div class="button flex justify-center pb-40 pt-12">
         <a
           class="
@@ -113,7 +113,7 @@
                     text-2xl
                   "
                 >
-                  <a class="bg-our-pet-products" href="">TÜM ÇANTALAR</a>
+                  <a class="bg-our-pet-products" href="">PET ÜRÜNLERİMİZ</a>
                 </div>
               </div>
             </div>
@@ -139,6 +139,8 @@
       </div>
     </div>
     <div class="about">
+      <about-second></about-second>
+      <!--
       <div class="container mx-auto">
         <div class="grid grid-rows-1">
           <div class="grid grid-cols-3">
@@ -149,8 +151,8 @@
                   alt=""
                 />
               </div>
-              <div class="description text-center relative">
-                <div class="title">
+              <div class="description text-center relative top-32">
+                <div class="title pb-3">
                   <h1>Family Owned</h1>
                 </div>
                 <div class="text">
@@ -159,7 +161,7 @@
                 <div class="horizontal">
                   <div class="w-5 h-3px bg-black inline-flex"></div>
                 </div>
-                <div class="link">
+                <div class="link pt-7 underline">
                   <a href="">Read our story</a>
                 </div>
               </div>
@@ -171,8 +173,8 @@
                   alt=""
                 />
               </div>
-              <div class="description text-center relative">
-                <div class="title">
+              <div class="description text-center relative top-32">
+                <div class="title pb-3">
                   <h1>Hand Crafted</h1>
                 </div>
                 <div class="text">
@@ -181,7 +183,7 @@
                 <div class="horizontal">
                   <div class="w-5 h-3px bg-black inline-flex"></div>
                 </div>
-                <div class="link">
+                <div class="link pt-7 underline">
                   <a href="">About our leather</a>
                 </div>
               </div>
@@ -193,8 +195,8 @@
                   alt=""
                 />
               </div>
-              <div class="description text-center relative">
-                <div class="title">
+              <div class="description text-center relative top-32">
+                <div class="title pb-3">
                   <h1>Created in the</h1>
                 </div>
                 <div class="text">
@@ -203,13 +205,132 @@
                 <div class="horizontal">
                   <div class="w-5 h-3px bg-black inline-flex"></div>
                 </div>
-                <div class="link">
+                <div class="link pt-7">
                   <a href="">Learn our process</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      -->
+    </div>
+    <div class="follow-us bg-our-models-card">
+      <div class="title text-center text-2xl font-bold">
+        <h1 class="tracking-widest pt-28">BİZİ TAKİP EDİN</h1>
+      </div>
+      <div class="link text-center text-xl mt-5 pb-12 text-red-700 italic">
+        <a href="">@knitpett</a>
+      </div>
+      <div class="container mx-0">
+        <div class="flex flex-wrap justify-center mt-20">
+          <div class="team-item flex flex-col lg:w-1/5 sm:w-1/2">
+            <div class="img self-center">
+              <img
+                class=""
+                src="~/assets/image/ea71bb_54a6c9dcf04b481fa3d41833ea7a29f6_mv2_d_1984_1441_s_2.webp"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="team-item flex flex-col lg:w-1/5 sm:w-1/2">
+            <div class="img self-center">
+              <img
+                class=""
+                src="~/assets/image/ea71bb_54a6c9dcf04b481fa3d41833ea7a29f6_mv2_d_1984_1441_s_2.webp"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="team-item flex flex-col lg:w-1/5 sm:w-1/2">
+            <div class="img self-center">
+              <img
+                class=""
+                src="~/assets/image/ea71bb_54a6c9dcf04b481fa3d41833ea7a29f6_mv2_d_1984_1441_s_2.webp"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="team-item flex flex-col lg:w-1/5 sm:w-1/2">
+            <div class="img self-center">
+              <img
+                class=""
+                src="~/assets/image/ea71bb_54a6c9dcf04b481fa3d41833ea7a29f6_mv2_d_1984_1441_s_2.webp"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="team-item flex flex-col lg:w-1/5 sm:w-1/2">
+            <div class="img self-center">
+              <img
+                class=""
+                src="~/assets/image/ea71bb_54a6c9dcf04b481fa3d41833ea7a29f6_mv2_d_1984_1441_s_2.webp"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto">
+        <div class="grid grid-cols-3 py-12">
+          <div class="title text-center">
+            <div class="horizontal pb-3 ">
+              <div class="w-5 h-3px bg-red-700 inline-flex"></div>
+            </div>
+            <h1 class="text-2xl text-red-700 italic">Worldwide shipping</h1>
+          </div>
+          <div class="title text-center">
+            <div class="horizontal pb-3">
+              <div class="w-5 h-3px bg-red-700 inline-flex"></div>
+            </div>
+            <h1 class="text-2xl text-red-700 italic">Easy 30 day returns</h1>
+          </div>
+          <div class="title text-center">
+            <div class="horizontal pb-3">
+              <div class="w-5 h-3px bg-red-700 inline-flex"></div>
+            </div>
+            <h1 class="text-2xl text-red-700 italic">12 month warranty</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="container mx-auto  pt-28 pb-40">
+        <div class="grid grid-cols-5">
+        <div class="logo">
+<h1 class="text-center italic text-5xl text-red-700">StoreKnit</h1>
+        </div>
+        <div class="footer-menu col-span-2 pl-24 pt-5">
+       <ul>
+         <li class="pt-4">
+           <a href="">Anasayfa</a>
+          
+         </li>
+         <li class="pt-4">
+           <a href="">Tüm Ürünler</a>
+           
+         </li>
+         <li class="pt-4">
+           <a href="">Hakkımızda</a>
+           
+         </li>
+         <li class="pt-4">
+           <a href=""> İletişim</a>
+          
+         </li>
+       </ul>
+        </div>
+        <div class="social-media col-span-2 pl-16 pt-5">
+         <ul>
+           <li class="pt-4"><a href="">Facebook</a></li>
+           <li class="pt-4"><a href="">İnstagram</a></li>
+           
+         </ul>
+        </div>
+        </div>
+      </div>
+      <div class="bg-our-models-card text-center p-4">
+        <h1>©2022 storeknit</h1>
       </div>
     </div>
   </div>
