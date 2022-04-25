@@ -5,6 +5,14 @@
     filter: brightness(0.7);
 }
 
-.translate-x-99px {
-    transform: translateX(-99px);
+@media screen and (max-width:1024px) {
+    .translate-x-180px {
+        transform: translateX(-150px);
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .lg-translate-x-99px {
+        transform: translateX(-99px);
+    }
 }

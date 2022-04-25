@@ -5,6 +5,11 @@ module.exports = {
         "./pages/**/*.vue",
         "./plugins/**/*.{js,ts}",
         "./nuxt.config.{js,ts}",
+        './src/**/*.{html,js}',
+        './node_modules/tw-elements/dist/js/**/*.js',
+    ],
+    plugins: [
+        require('tw-elements/dist/plugin')
     ],
     theme: {
         letterSpacing: {
@@ -23,6 +28,7 @@ module.exports = {
 
 
                 'home': "url('~/assets/image/11062b_0446c8c911d8433cb2c8550ccc97e582_mv2_d_4368_2912_s_4_2.webp')",
+
                 'about': "url('~/assets/image/0edf2e_d7903c238b4744e8b58f397bb9f63f85_mv2.webp')"
 
             },
@@ -32,9 +38,11 @@ module.exports = {
                 '15.7': '15.7rem',
                 '3px': '3px',
                 '29px': '29px',
+                '35px': '35px',
                 '47px': '47px',
                 '241px': '241px',
                 '64px': '64px',
+                '203px': '203px',
                 '244px': '244px',
                 '300px': '300px',
             },
