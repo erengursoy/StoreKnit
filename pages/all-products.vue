@@ -3,14 +3,16 @@
     <div class="header">
       <header-template></header-template>
     </div>
+
     <div class="title text-center pt-20 pb-10 text-4xl font-bold">
       <h1>TÜM ÜRÜNLER</h1>
     </div>
+
     <div class="container mx-auto">
       <div class="grid grid-rows-1">
         <div class="grid grid-cols-1 lg:grid-cols-5">
           <div class="left col-span-1 pt-5 pl-16">
-            <div class="filter">
+            <div class="filter pl-14 md:pl-0">
               <div class="title text-2xl block pb-4">
                 <h1>Filtreleme Kriteri:</h1>
               </div>
@@ -20,12 +22,12 @@
                 v-on:click="showCollection = !showCollection"
                 >Koleksiyon
                 <span
-                  class="float-right text-xl font-bold mr-3 pb-1"
+                  class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
                   v-if="!showCollection"
                   >+</span
                 >
                 <span
-                  class="float-right text-xl font-bold mr-3"
+                  class="float-right text-xl font-bold mr-28 lg:mr-3"
                   v-if="showCollection"
                   >-</span
                 ></a
@@ -56,12 +58,12 @@
                 v-on:click="showPrice = !showPrice"
                 >Fiyat
                 <span
-                  class="float-right text-xl font-bold mr-3 pb-1"
+                  class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
                   v-if="!showPrice"
                   >+</span
                 >
                 <span
-                  class="float-right text-xl font-bold mr-3"
+                  class="float-right text-xl font-bold mr-28 lg:mr-3"
                   v-if="showPrice"
                   >-</span
                 ></a
@@ -69,8 +71,8 @@
               <hr class="w-44" />
               <div v-show="showPrice">
                 <div class="pt-12 pb-6">
-                  <div  class="track-container" >
-                    <span  class="range-value min -ml-4"
+                  <div class="track-container w-7/12 lg:w-4/5">
+                    <span class="range-value min -ml-4"
                       >{{ minValue + ",00₺" }}
                     </span>
                     <span class="range-value max float-right">{{
@@ -88,12 +90,12 @@
                 v-on:click="showModel = !showModel"
                 >Model
                 <span
-                  class="float-right text-xl font-bold mr-3 pb-1"
+                  class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
                   v-if="!showModel"
                   >+</span
                 >
                 <span
-                  class="float-right text-xl font-bold mr-3"
+                  class="float-right text-xl font-bold mr-28 lg:mr-3"
                   v-if="showModel"
                   >-</span
                 ></a
@@ -113,7 +115,6 @@
                     </label>
                     <label id="iphone-xs" class="inline-flex items-center mt-3">
                       <input
-                      
                         type="checkbox"
                         v-model="modelFilter"
                         value="iphone xs"
@@ -124,16 +125,18 @@
                   </div>
                 </div>
               </div>
-              <a 
+              <a
                 class="cursor-pointer block py-4"
                 v-on:click="showSize = !showSize"
                 >Size
                 <span
-                  class="float-right text-xl font-bold mr-3 pb-1"
+                  class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
                   v-if="!showSize"
                   >+</span
                 >
-                <span class="float-right text-xl font-bold mr-3" v-if="showSize"
+                <span
+                  class="float-right text-xl font-bold mr-28 lg:mr-3"
+                  v-if="showSize"
                   >-</span
                 ></a
               >
@@ -167,10 +170,13 @@
           <div class="right col-span-1 lg:col-span-4">
             <div class="grid grid-cols-1 lg:grid-cols-4">
               <div
-                v-for="product in filteredproducts"
+
+                v-bind:id="product.id"
+                v-for="(product, index) in filteredproducts"
+                
                 class="card p-7 text-center relative"
               >
-                <div class="img relative">
+                <div  class="img relative">
                   <img class="w-full" :src="product.img" alt="" />
                   <div
                     v-if="product.bestSell"
@@ -193,6 +199,11 @@
                 </div>
 
                 <div
+                
+                
+                 
+                  @click="toggle(index)"
+                  v-bind:id="product.id"
                   class="
                     hover
                     bg-white
@@ -206,18 +217,180 @@
                     opacity-0
                     text-lg
                     lg:text-base
+                    cursor-pointer
                   "
                 >
                   <h1>hızlı görünüm</h1>
                 </div>
+
                 <div class="title pt-3">
-                  <h1>{{ product.productName }}</h1>
+                  <h1>{{ product.productName }} active: {{active}} index:{{index}}</h1>
                 </div>
                 <div class="text pt-1 text-red-700 italic">
                   <h1>{{ product.productPrice }}</h1>
                 </div>
               </div>
             </div>
+            <div
+              v-for="(product, index) in filteredproducts"
+              :key="index"
+              v-show="index === active"
+              :class="[isOpenCard ? 'show-mobile-card' : '']"
+              :id="index"
+              class="offcanvas-mobile-card"
+            >
+              <div @click="toggle(index)" class="mobile-card-overlay"></div>
+              <div class="inner">
+                <div class="mobile-header">
+                  <button
+                    @click="toggle(index)"
+                    class="mobile-close-btn text-black"
+                  ></button>
+                </div>
+                <div class="card-content flex">
+                  <div class="container">
+                    <div class="grid grid-cols-2">
+                      <div class="left pb-5 ">
+                        <div   class="flex justify-center">
+                           <app-slider :eren="index"   v-for="(product, index) in products"  v-show="index === active"  :data="product.imgList"></app-slider>
+                          
+                        </div>
+                       
+                      </div>
+                      <div class="right">
+                        <div class="title pt-3 text-xl">
+                          {{ product.productName }} active: {{active}} index:{{index}}
+                        </div>
+                        <div class="price pt-4 pb-10 text-red-700 italic">
+                          <h1>{{ product.productPrice }}</h1>
+                        </div>
+                        <div class="piece pb-10">
+                          <h1 class="text-sm pb-4">Adet</h1>
+                          <input
+                            type="number"
+                            value="1"
+                            class="
+                              px-3
+                              py-1.5
+                              text-base
+                              font-normal
+                              border border-solid border-gray-300
+                              transition
+                              ease-in-out
+                              m-0
+                              focus:text-gray-700
+                              focus:bg-white
+                              focus:border-blue-600
+                              focus:outline-none
+                              w-1/5
+                            "
+                          />
+                        </div>
+                        <div class="btn">
+                          <a
+                            class="
+                              inline-block
+                              py-3
+                              px-32
+                              text-sm
+                              hover:bg-red-300 hover:text-red-100
+                              bg-red-600
+                              text-white
+                            "
+                            href=""
+                            >Add to Cart</a
+                          >
+                        </div>
+                       <div @click="toggllee(index)"  class="detail underline pt-4">
+                          
+                          <h1>Detay görüntüle</h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <div
+              v-for="(product, index) in filteredproducts"
+              :key="index"
+              v-show="index === active"
+              :class="[isOpenPage ? 'show-mobile-page' : '']"
+              :id="index"
+              class="offcanvas-mobile-page"
+            >
+              <div @click="toggllee" class="mobile-card-overlay"></div>
+              <div class="inner">
+                <div class="mobile-header">
+                  <button
+                    @click="toggllee"
+                    class="mobile-close-btn text-black"
+                  ></button>
+                </div>
+                <div  class="card-content flex">
+                  <div class="container">
+                    <div class="grid grid-cols-2">
+                      <div class="left pb-5 ">
+                        <div   class="flex justify-center">
+                           <app-slider v-show="index === active" :data="product.imgList"></app-slider>
+                        </div>
+                       
+                      </div>
+                      <div class="right">
+                        <div class="title pt-3 text-xl">
+                          {{ product.productName }} active: {{active}} index:{{index}}
+                        </div>
+                        <div class="price pt-4 pb-10 text-red-700 italic">
+                          <h1>{{ product.productPrice }}</h1>
+                        </div>
+                        <div class="piece pb-10">
+                          <h1 class="text-sm pb-4">Adet</h1>
+                          <input
+                            type="number"
+                            value="1"
+                            class="
+                              px-3
+                              py-1.5
+                              text-base
+                              font-normal
+                              border border-solid border-gray-300
+                              transition
+                              ease-in-out
+                              m-0
+                              focus:text-gray-700
+                              focus:bg-white
+                              focus:border-blue-600
+                              focus:outline-none
+                              w-1/5
+                            "
+                          />
+                        </div>
+                        <div class="btn">
+                          <a 
+                            class="
+                              inline-block
+                              py-3
+                              px-32
+                              text-sm
+                              hover:bg-red-300 hover:text-red-100
+                              bg-red-600
+                              text-white
+                            "
+                            href=""
+                            >Add to Cart</a
+                          >
+                        </div>
+                        <div @click="toggllee(index)"  class="detail underline pt-4">
+                          
+                          <h1>Detay görüntüle</h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -250,75 +423,155 @@ export default {
       priceFilter: [],
       modelFilter: [],
       sizeFilter: [],
-
+      active: 0,
+      index:0,
       products: [
-        {
+       {
+          id: 1,
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
-          productName: "Evcil Hayvan Yatağı iphone xs large",
-          productPrice: 395,
-          bestSell: true,
-          model: "iphone xs",
-          size: "large",
+          productName: "Evcil Hayvan Yatağı iphone x medium",
+          productPrice: "395",
+          bestSell: false,
+          model: "iphone x",
+          size: "medium",
+          card: false,
+          imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+          ],
         },
         {
+          id: 2,
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı iphone x medium",
           productPrice: "395,00₺",
           bestSell: false,
           model: "iphone x",
           size: "medium",
+          card: false,
+          imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+          ],
         },
         {
+          id: 3,
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı iphone xs large",
           productPrice: "395,00₺",
           bestSell: false,
-           model: "iphone xs",
+          model: "iphone xs",
           size: "large",
+          imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+          ],
         },
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı iphone xs medium",
           productPrice: "395,00₺",
           bestSell: true,
-           model: "iphone xs",
+          model: "iphone xs",
           size: "medium",
+           imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+          ],
         },
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı",
           productPrice: "395,00₺",
           bestSell: false,
+          imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+          ],
         },
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı",
           productPrice: "395,00₺",
           bestSell: true,
+           imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+          ],
         },
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı",
           productPrice: "395,00₺",
           bestSell: false,
+         imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+          ],
         },
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı",
           productPrice: "395,00₺",
           bestSell: false,
+         imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+          ],
         },
         {
           img: require("~/assets/image/ea71bb_a098804073f8481dab7214af6904a585_mv2_d_4601_3315_s_4_2.webp"),
           productName: "Evcil Hayvan Yatağı",
           productPrice: "395,00₺",
           bestSell: false,
+         imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+          ],
         },
       ],
+       
+
       filter: [],
+      isOpenCard: false,
+      isOpenPage: false,
     };
   },
   methods: {
+    toggle(index) {
+      this.isOpenCard = !this.isOpenCard;
+       this.active = (index + this.total) % this.total;
+      
+     
+      
+    },
+     toggllee(index) {
+      this.isOpenPage = !this.isOpenPage;
+       this.active = (index + this.total) % this.total;
+     
+      
+      
+     
+    },
+
     moveTrack(track, ev) {
       let percentInPx = this.getPercentInPx();
 
@@ -409,22 +662,21 @@ export default {
         this.moveTrack("track2", ev);
       }
     },
-    
   },
   computed: {
     filteredproducts: function () {
       const priceFilter = this.priceFilter;
       const modelFilter = this.modelFilter;
       const sizeFilter = this.sizeFilter;
+       
       
       
-      
+
       if (modelFilter.length && sizeFilter.length) {
         return this.products.filter(function (product) {
           return (
-           
             modelFilter.includes(product.model) &&
-            sizeFilter.includes(product.size) 
+            sizeFilter.includes(product.size)
           );
         });
       } else if (priceFilter.length) {
@@ -439,11 +691,14 @@ export default {
         return this.products.filter(function (product) {
           return sizeFilter.includes(product.size);
         });
-        
       } else {
-        return this.products;
+        return this.products ;
       }
     },
+    total() {
+      return this.filteredproducts.length ;
+    },
+    
   },
 
   mounted() {
@@ -510,7 +765,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .card:hover .hover {
   opacity: 1;
   transform: translateY(-47px);
@@ -519,7 +774,6 @@ export default {
   right: 0;
 }
 .track-container {
-  width: 85%;
   position: relative;
   cursor: pointer;
   height: 0.5rem;
@@ -570,5 +824,251 @@ export default {
     background-color 0.3s ease;
   transition: transform 0.3s ease-out, box-shadow 0.3s ease-out,
     background-color 0.3s ease, -webkit-transform 0.3s ease-out;
+}
+.top-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 85px;
+  background-color: #00225a;
+  padding: 0 15px 0 30px;
+}
+
+.show-mobile-card.offcanvas-mobile-card {
+  visibility: visible;
+  background-color: rgb(0 0 0 / 64%);
+}
+.offcanvas-mobile-card {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  visibility: hidden;
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+  z-index: 99999;
+}
+.offcanvas-mobile-card .inner .mobile-header {
+  align-items: center;
+  display: flex;
+  justify-content: end;
+  
+
+  padding: 20px 15px 20px 30px;
+}
+.offcanvas-mobile-card .inner .mobile-header .logo {
+  width: 155px;
+}
+.offcanvas-mobile-card .inner .mobile-header .mobile-close-btn:after,
+.offcanvas-mobile-card .inner .mobile-header .mobile-close-btn:before {
+  position: absolute;
+  top: 19px;
+  left: 8px;
+  content: "";
+  width: 24px;
+  height: 3px;
+  background: #fff;
+  transform-origin: 50% 50%;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.offcanvas-mobile-card .mobile-card-overlay {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+}
+.show-mobile-card.offcanvas-mobile-card .inner {
+  transform: none;
+  right: 225px;
+}
+
+
+.offcanvas-mobile-card .inner {
+  position: absolute;
+  width: 65%;
+
+  height: 100%;
+  right: 0;
+  top: 0;
+  text-align: left;
+  transition: all 0.3s;
+  transform: translateX(100%);
+  cursor: default;
+  background-color: #fff;
+  z-index: 1;
+}
+.card-content {
+  margin: 30px;
+}
+.offcanvas-navigation ul li a {
+  color: #212529;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 0;
+  display: block;
+}
+
+.offcanvas-mobile-card .mobile-card-overlay {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+}
+.offcanvas-mobile-card .inner .mobile-header .mobile-close-btn {
+  cursor: pointer;
+  border: none;
+
+  width: 40px;
+  flex-shrink: 0;
+  position: relative;
+  background-color: transparent;
+}
+
+.offcanvas-mobile-card .inner .mobile-header .mobile-close-btn:after,
+.offcanvas-mobile-card .inner .mobile-header .mobile-close-btn:before {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  content: "";
+  width: 24px;
+  height: 3px;
+  background: rgb(0, 0, 0);
+  transform-origin: 50% 50%;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.offcanvas-mobile-card .inner .mobile-header .mobile-close-btn:before {
+  transform: rotate(-45deg);
+}
+
+.offcanvas-mobile-card .inner .mobile-header .mobile-close-btn:after {
+  transform: rotate(45deg);
+}
+.show-mobile-page.offcanvas-mobile-page {
+  visibility: visible;
+  background-color: rgb(0 0 0 / 64%);
+}
+.offcanvas-mobile-page {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  visibility: hidden;
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+  z-index: 99999;
+}
+.offcanvas-mobile-page .inner .mobile-header {
+  align-items: center;
+  display: flex;
+  justify-content: end;
+  
+
+  padding: 20px 15px 20px 30px;
+}
+.offcanvas-mobile-page .inner .mobile-header .logo {
+  width: 155px;
+}
+.offcanvas-mobile-page .inner .mobile-header .mobile-close-btn:after,
+.offcanvas-mobile-page .inner .mobile-header .mobile-close-btn:before {
+  position: absolute;
+  top: 19px;
+  left: 8px;
+  content: "";
+  width: 24px;
+  height: 3px;
+  background: #fff;
+  transform-origin: 50% 50%;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.offcanvas-mobile-page .mobile-page-overlay {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+}
+.show-mobile-page.offcanvas-mobile-page .inner {
+  transform: none;
+  right: 225px;
+}
+.show-mobile-page.offcanvas-mobile-page .inner {
+  transform: none;
+  right: 0;
+}
+
+.offcanvas-mobile-page .inner {
+  position: absolute;
+  width: 100%;
+
+  height: 100%;
+  right: 0;
+  top: 0;
+  text-align: left;
+  transition: all 0.3s;
+  transform: translateX(100%);
+  cursor: default;
+  background-color: #fff;
+  z-index: 1;
+}
+.page-content {
+  margin: 30px;
+}
+.offcanvas-navigation ul li a {
+  color: #212529;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 0;
+  display: block;
+}
+
+.offcanvas-mobile-page .mobile-page-overlay {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+}
+.offcanvas-mobile-page .inner .mobile-header .mobile-close-btn {
+  cursor: pointer;
+  border: none;
+
+  width: 40px;
+  flex-shrink: 0;
+  position: relative;
+  background-color: transparent;
+}
+
+.offcanvas-mobile-page .inner .mobile-header .mobile-close-btn:after,
+.offcanvas-mobile-page .inner .mobile-header .mobile-close-btn:before {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  content: "";
+  width: 24px;
+  height: 3px;
+  background: rgb(0, 0, 0);
+  transform-origin: 50% 50%;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.offcanvas-mobile-page .inner .mobile-header .mobile-close-btn:before {
+  transform: rotate(-45deg);
+}
+
+.offcanvas-mobile-page .inner .mobile-header .mobile-close-btn:after {
+  transform: rotate(45deg);
 }
 </style>

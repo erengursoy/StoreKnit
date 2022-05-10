@@ -5,12 +5,9 @@ module.exports = {
         "./pages/**/*.vue",
         "./plugins/**/*.{js,ts}",
         "./nuxt.config.{js,ts}",
-        './src/**/*.{html,js}',
-        './node_modules/tw-elements/dist/js/**/*.js',
+        "./node_modules/flowbite/**/*.js"
     ],
-    plugins: [
-        require('tw-elements/dist/plugin')
-    ],
+
     theme: {
         letterSpacing: {
             tightest: '-.075em',
@@ -63,5 +60,6 @@ module.exports = {
 
         },
     },
+    plugins: [require('flowbite/plugin')],
 
 }
