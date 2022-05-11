@@ -1,354 +1,364 @@
 <template>
-<div>
-  <div :class="[isOpenPage ? 'hidden' : '']" id="all-products">
-    <div class="header">
-      <header-template></header-template>
-    </div>
+  <div>
+    <div :class="[isOpenPage ? 'hidden' : '']" id="all-products">
+      <div class="header">
+        <header-template></header-template>
+      </div>
 
-    <div class="title text-center pt-20 pb-10 text-4xl font-bold">
-      <h1>TÜM ÜRÜNLER</h1>
-    </div>
+      <div class="title text-center pt-20 pb-10 text-4xl font-bold">
+        <h1>TÜM ÜRÜNLER</h1>
+      </div>
 
-    <div class="container mx-auto">
-      <div class="grid grid-rows-1">
-        <div class="grid grid-cols-1 lg:grid-cols-5">
-          <div class="left col-span-1 pt-5 pl-16">
-            <div class="filter pl-14 md:pl-0">
-              <div class="title text-2xl block pb-4">
-                <h1>Filtreleme Kriteri:</h1>
-              </div>
-              <hr class="w-44" />
-              <a
-                class="cursor-pointer block py-4"
-                v-on:click="showCollection = !showCollection"
-                >Koleksiyon
-                <span
-                  class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
-                  v-if="!showCollection"
-                  >+</span
-                >
-                <span
-                  class="float-right text-xl font-bold mr-28 lg:mr-3"
-                  v-if="showCollection"
-                  >-</span
-                ></a
-              >
-
-              <hr class="w-44" />
-              <div v-show="showCollection">
-                <div class="">
-                  <ul class="text-sm">
-                    <li class="font-bold"><a href="">lorem ipsum</a></li>
-                    <li class="text-gray-600 hover:text-gray-400">
-                      <a href="">lorem ipsum</a>
-                    </li>
-                    <li class="text-gray-600 hover:text-gray-400">
-                      <a href="">lorem ipsum</a>
-                    </li>
-                    <li class="text-gray-600 hover:text-gray-400">
-                      <a href="">lorem ipsum</a>
-                    </li>
-                    <li class="text-gray-600 hover:text-gray-400">
-                      <a href="">lorem ipsum</a>
-                    </li>
-                  </ul>
+      <div class="container mx-auto">
+        <div class="grid grid-rows-1">
+          <div class="grid grid-cols-1 lg:grid-cols-5">
+            <div class="left col-span-1 pt-5 pl-16">
+              <div class="filter pl-14 md:pl-0">
+                <div class="title text-2xl block pb-4">
+                  <h1>Filtreleme Kriteri:</h1>
                 </div>
-              </div>
-              <a
-                class="cursor-pointer block py-4"
-                v-on:click="showPrice = !showPrice"
-                >Fiyat
-                <span
-                  class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
-                  v-if="!showPrice"
-                  >+</span
+                <hr class="w-44" />
+                <a
+                  class="cursor-pointer block py-4"
+                  v-on:click="showCollection = !showCollection"
+                  >Koleksiyon
+                  <span
+                    class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
+                    v-if="!showCollection"
+                    >+</span
+                  >
+                  <span
+                    class="float-right text-xl font-bold mr-28 lg:mr-3"
+                    v-if="showCollection"
+                    >-</span
+                  ></a
                 >
-                <span
-                  class="float-right text-xl font-bold mr-28 lg:mr-3"
-                  v-if="showPrice"
-                  >-</span
-                ></a
-              >
-              <hr class="w-44" />
-              <div v-show="showPrice">
-                <div class="pt-12 pb-6">
-                  <div  class="track-container w-7/12 lg:w-4/5">
-                 
-                    <span class="range-value min -ml-4"
-                      >{{ minValue + ",00₺" }}
-                    </span>
-                    <span class="range-value max float-right">{{
-                      maxValue + ",00₺"
-                    }}</span>
-                    <div class="track" ref="_vpcTrack"></div>
-                    <div class="track-highlight" ref="trackHighlight"></div>
-                    <button class="track-btn track1" ref="track1"></button>
-                    <button class="track-btn track2" ref="track2"></button>
+
+                <hr class="w-44" />
+                <div v-show="showCollection">
+                  <div class="">
+                    <ul class="text-sm">
+                      <li class="font-bold"><a href="">lorem ipsum</a></li>
+                      <li class="text-gray-600 hover:text-gray-400">
+                        <a href="">lorem ipsum</a>
+                      </li>
+                      <li class="text-gray-600 hover:text-gray-400">
+                        <a href="">lorem ipsum</a>
+                      </li>
+                      <li class="text-gray-600 hover:text-gray-400">
+                        <a href="">lorem ipsum</a>
+                      </li>
+                      <li class="text-gray-600 hover:text-gray-400">
+                        <a href="">lorem ipsum</a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              </div>
-              <a
-                class="cursor-pointer block py-4"
-                v-on:click="showModel = !showModel"
-                >Model
-                <span
-                  class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
-                  v-if="!showModel"
-                  >+</span
+                <a
+                  class="cursor-pointer block py-4"
+                  v-on:click="showPrice = !showPrice"
+                  >Fiyat
+                  <span
+                    class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
+                    v-if="!showPrice"
+                    >+</span
+                  >
+                  <span
+                    class="float-right text-xl font-bold mr-28 lg:mr-3"
+                    v-if="showPrice"
+                    >-</span
+                  ></a
                 >
-                <span
-                  class="float-right text-xl font-bold mr-28 lg:mr-3"
-                  v-if="showModel"
-                  >-</span
-                ></a
-              >
-              <hr class="w-44" />
-              <div v-show="showModel">
-                <div class="">
-                  <div class="flex flex-col">
-                    <label id="iphone-x" class="inline-flex items-center mt-3">
-                      <input
-                        type="checkbox"
-                        v-model="modelFilter"
-                        value="iphone x"
-                        for="iphone-x"
-                        class="form-checkbox h-5 w-5 text-gray-600"
-                      /><span class="ml-2 text-gray-700">iphone x</span>
-                    </label>
-                    <label id="iphone-xs" class="inline-flex items-center mt-3">
-                      <input
-                        type="checkbox"
-                        v-model="modelFilter"
-                        value="iphone xs"
-                        for="iphone-xs"
-                        class="form-checkbox h-5 w-5 text-gray-600"
-                      /><span class="ml-2 text-gray-700">iphone xs</span>
-                    </label>
+                <hr class="w-44" />
+                <div v-show="showPrice">
+                  <div class="pt-12 pb-6">
+                    <div  class="track-container w-7/12 lg:w-4/5">
+                      <span class="range-value min -ml-4"
+                        >{{ minValue + ",00₺" }}
+                      </span>
+                      <span class="range-value max float-right">{{
+                        maxValue + ",00₺"
+                      }}</span>
+                      <div class="track" ref="_vpcTrack"></div>
+                      <div class="track-highlight" ref="trackHighlight"></div>
+                      <button class="track-btn track1" ref="track1"></button>
+                      <button class="track-btn track2" ref="track2"></button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <a
-                class="cursor-pointer block py-4"
-                v-on:click="showSize = !showSize"
-                >Size
-                <span
-                  class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
-                  v-if="!showSize"
-                  >+</span
+                <a
+                  class="cursor-pointer block py-4"
+                  v-on:click="showModel = !showModel"
+                  >Model
+                  <span
+                    class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
+                    v-if="!showModel"
+                    >+</span
+                  >
+                  <span
+                    class="float-right text-xl font-bold mr-28 lg:mr-3"
+                    v-if="showModel"
+                    >-</span
+                  ></a
                 >
-                <span
-                  class="float-right text-xl font-bold mr-28 lg:mr-3"
-                  v-if="showSize"
-                  >-</span
-                ></a
-              >
-              <hr class="w-44" />
-              <div v-show="showSize">
-                <div class="">
-                  <div class="flex flex-col">
-                    <label id="large" class="inline-flex items-center mt-3">
-                      <input
-                        type="checkbox"
-                        v-model="sizeFilter"
-                        value="large"
-                        for="large"
-                        class="form-checkbox h-5 w-5 text-gray-600"
-                      /><span class="ml-2 text-gray-700">large</span>
-                    </label>
-                    <label id="iphone-xs" class="inline-flex items-center mt-3">
-                      <input
-                        type="checkbox"
-                        v-model="sizeFilter"
-                        value="medium"
-                        for="iphone-xs"
-                        class="form-checkbox h-5 w-5 text-gray-600"
-                      /><span class="ml-2 text-gray-700">medium</span>
-                    </label>
+                <hr class="w-44" />
+                <div v-show="showModel">
+                  <div class="">
+                    <div class="flex flex-col">
+                      <label
+                        id="iphone-x"
+                        class="inline-flex items-center mt-3"
+                      >
+                        <input
+                          type="checkbox"
+                          v-model="modelFilter"
+                          value="iphone x"
+                          for="iphone-x"
+                          class="form-checkbox h-5 w-5 text-gray-600"
+                        /><span class="ml-2 text-gray-700">iphone x</span>
+                      </label>
+                      <label
+                        id="iphone-xs"
+                        class="inline-flex items-center mt-3"
+                      >
+                        <input
+                          type="checkbox"
+                          v-model="modelFilter"
+                          value="iphone xs"
+                          for="iphone-xs"
+                          class="form-checkbox h-5 w-5 text-gray-600"
+                        /><span class="ml-2 text-gray-700">iphone xs</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  class="cursor-pointer block py-4"
+                  v-on:click="showSize = !showSize"
+                  >Size
+                  <span
+                    class="float-right text-xl font-bold mr-28 lg:mr-3 pb-1"
+                    v-if="!showSize"
+                    >+</span
+                  >
+                  <span
+                    class="float-right text-xl font-bold mr-28 lg:mr-3"
+                    v-if="showSize"
+                    >-</span
+                  ></a
+                >
+                <hr class="w-44" />
+                <div v-show="showSize">
+                  <div class="">
+                    <div class="flex flex-col">
+                      <label id="large" class="inline-flex items-center mt-3">
+                        <input
+                          type="checkbox"
+                          v-model="sizeFilter"
+                          value="large"
+                          for="large"
+                          class="form-checkbox h-5 w-5 text-gray-600"
+                        /><span class="ml-2 text-gray-700">large</span>
+                      </label>
+                      <label
+                        id="iphone-xs"
+                        class="inline-flex items-center mt-3"
+                      >
+                        <input
+                          type="checkbox"
+                          v-model="sizeFilter"
+                          value="medium"
+                          for="iphone-xs"
+                          class="form-checkbox h-5 w-5 text-gray-600"
+                        /><span class="ml-2 text-gray-700">medium</span>
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="right col-span-1 lg:col-span-4">
-            <div class="grid grid-cols-1 lg:grid-cols-4">
-              <div
-                v-bind:id="product.id"
-                v-for="(product, index) in filteredproducts"
-                class="card p-7 text-center relative"
-              >
-                <div class="img relative">
-                  <img class="w-full" :src="product.img" alt="" />
+            <div class="right col-span-1 lg:col-span-4">
+              <div class="grid grid-cols-1 lg:grid-cols-4">
+                <div v-show="product.productPrice <= maxValue && product.productPrice >= minValue "
+                  v-bind:id="product.id"
+                  :key="product"
+                  v-for="(product, index) in filteredproducts"
+                  class="card p-7 text-center relative"
+                >
+                  <div class="img relative">
+                    <img class="w-full" :src="product.img" alt="" />
+                    <div
+                      v-if="product.bestSell"
+                      class="
+                        best-sell
+                        text-white
+                        inline-block
+                        absolute
+                        top-0
+                        left-0
+                        bg-best-sell
+                        px-4
+                        py-1
+                        text-lg
+                        lg:text-xs
+                      "
+                    >
+                      <h1>Best seller</h1>
+                    </div>
+                  </div>
+
                   <div
-                    v-if="product.bestSell"
+                    @click="toggle(index)"
+                    v-bind:id="product.id"
                     class="
-                      best-sell
-                      text-white
-                      inline-block
+                      hover
+                      bg-white
+                      p-3
+                      px-28
+                      lg:px-14
                       absolute
-                      top-0
-                      left-0
-                      bg-best-sell
-                      px-4
-                      py-1
+                      duration-500
+                      transform
+                      translate-y-0
+                      opacity-0
                       text-lg
-                      lg:text-xs
+                      lg:text-base
+                      cursor-pointer
                     "
                   >
-                    <h1>Best seller</h1>
+                    <h1>hızlı görünüm</h1>
+                  </div>
+
+                  <div class="title pt-3">
+                    <h1>
+                      {{ product.productName }} active: {{ active }} index:{{
+                        index
+                      }}
+                    </h1>
+                  </div>
+                  <div class="text pt-1 text-red-700 italic">
+                    <h1>{{ product.productPrice }}</h1>
                   </div>
                 </div>
-
-                <div
-                  @click="toggle(index)"
-                  v-bind:id="product.id"
-                  class="
-                    hover
-                    bg-white
-                    p-3
-                    px-28
-                    lg:px-14
-                    absolute
-                    duration-500
-                    transform
-                    translate-y-0
-                    opacity-0
-                    text-lg
-                    lg:text-base
-                    cursor-pointer
-                  "
-                >
-                  <h1>hızlı görünüm</h1>
-                </div>
-
-                <div class="title pt-3">
-                  <h1>
-                    {{ product.productName }} active: {{ active }} index:{{
-                      index
-                    }}
-                  </h1>
-                </div>
-                <div class="text pt-1 text-red-700 italic">
-                  <h1>{{ product.productPrice }}</h1>
-                </div>
               </div>
-            </div>
-            <div
-              v-for="(product, index) in filteredproducts"
-              :key="index"
-              v-show="index === active"
-              :class="[isOpenCard ? 'show-mobile-card' : '']"
-              :id="index"
-              class="offcanvas-mobile-card"
-            >
-              <div @click="toggle(index)" class="mobile-card-overlay"></div>
-              <div class="inner">
-                <div class="mobile-header">
-                  <button
-                    @click="toggle(index)"
-                    class="mobile-close-btn text-black"
-                  ></button>
-                </div>
-                <div class="card-content flex">
-                  <div class="container">
-                    <div class="grid grid-cols-2">
-                      <div class="left pb-5">
-                        <div class="flex justify-center">
-                          <div
-                            id="app"
-                            class="
-                              slideshow-container
-                              flex flex-col
-                              items-center
-                              
-                            "
-                            v-show="index === active"
-                          >
-                            <div class="mySlide w-1/2">
-                              <div class="numbertext">{{ direction }}</div>
-                              <div class="numbertext">{{ eren }}</div>
-                              <img
-                                v-for="(src, index) in product.imgList"
-                                :key="src"
-                                :src="src"
-                                v-show="index === activee"
-                              />
-                            </div>
-                            <a
-                              class="prev"
-                              v-if="prev"
-                              @click="change(activee - 1)"
-                              >&#10094;</a
+              <div
+                v-for="(product, index) in filteredproducts"
+                :key="index"
+                v-show="index === active"
+                :class="[isOpenCard ? 'show-mobile-card' : '']"
+                :id="index"
+                class="offcanvas-mobile-card"
+              >
+                <div @click="toggle(index)" class="mobile-card-overlay"></div>
+                <div class="inner">
+                  <div class="mobile-header">
+                    <button
+                      @click="toggle(index)"
+                      class="mobile-close-btn text-black"
+                    ></button>
+                  </div>
+                  <div class="card-content flex">
+                    
+                    
+                    <div class="container">
+                      <div class="grid grid-cols-2">
+                        <div class="left pb-5">
+                          <div class="flex justify-center">
+                            <div
+                              id="app"
+                              class="
+                                slideshow-container
+                                flex flex-col
+                                items-center
+                              "
+                              v-show="index === active"
                             >
-                            <a
-                              class="next"
-                              v-if="next"
-                              @click="change(activee + 1)"
-                              >&#10095;</a
-                            >
-                            <ul class="slider_dots">
-                              <li
-                                 v-for="(src, index) in product.imgList"
-                                :key="src"
-                                :class="{ active: index === activee }"
-                                @click="change(index,product.imgList.length)"
-                                
+                              <div class="mySlide w-1/2">
+                                <div class="numbertext">{{ direction }}</div>
+                                <div class="numbertext">{{ eren }}</div>
+                                <img
+                                  v-for="(src, index) in product.imgList"
+                                  :key="src"
+                                  :src="src"
+                                  v-show="index === activee"
+                                />
+                              </div>
+                              <a
+                                class="prev"
+                                v-if="prev"
+                                @click="change(activee - 1)"
+                                >&#10094;</a
                               >
-                                {{ index }}
-                              </li>
-                            </ul>
+                              <a
+                                class="next"
+                                v-if="next"
+                                @click="change(activee + 1)"
+                                >&#10095;</a
+                              >
+                              <ul class="slider_dots">
+                                <li
+                                  v-for="(src, index) in product.imgList"
+                                  :key="src"
+                                  :class="{ active: index === activee }"
+                                  @click="change(index, product.imgList.length)"
+                                >
+                                  {{ index }}
+                                </li>
+                              </ul>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="right">
-                        <div class="title pt-3 text-xl">
-                          {{ product.productName }} active:
-                          {{ active }} index:{{ index }}
-                        </div>
-                        <div class="price pt-4 pb-10 text-red-700 italic">
-                          <h1>{{ product.productPrice }}</h1>
-                        </div>
-                        <div class="piece pb-10">
-                          <h1 class="text-sm pb-4">Adet</h1>
-                          <input
-                            type="number"
-                            value="1"
-                            class="
-                              px-3
-                              py-1.5
-                              text-base
-                              font-normal
-                              border border-solid border-gray-300
-                              transition
-                              ease-in-out
-                              m-0
-                              focus:text-gray-700
-                              focus:bg-white
-                              focus:border-blue-600
-                              focus:outline-none
-                              w-1/5
-                            "
-                          />
-                        </div>
-                        <div class="btn">
-                          <a
-                            class="
-                              inline-block
-                              py-3
-                              px-32
-                              text-sm
-                              hover:bg-red-300 hover:text-red-100
-                              bg-red-600
-                              text-white
-                            "
-                            href=""
-                            >Add to Cart</a
+                        <div class="right">
+                          <div class="title pt-3 text-xl">
+                            {{ product.productName }} active:
+                            {{ active }} index:{{ index }}
+                          </div>
+                          <div class="price pt-4 pb-10 text-red-700 italic">
+                            <h1>{{ product.productPrice }}</h1>
+                          </div>
+                          <div class="piece pb-10">
+                            <h1 class="text-sm pb-4">Adet</h1>
+                            <input
+                              type="number"
+                              value="1"
+                              class="
+                                px-3
+                                py-1.5
+                                text-base
+                                font-normal
+                                border border-solid border-gray-300
+                                transition
+                                ease-in-out
+                                m-0
+                                focus:text-gray-700
+                                focus:bg-white
+                                focus:border-blue-600
+                                focus:outline-none
+                                w-1/5
+                              "
+                            />
+                          </div>
+                          <div class="btn">
+                            <a
+                              class="
+                                inline-block
+                                py-3
+                                px-32
+                                text-sm
+                                hover:bg-red-300 hover:text-red-100
+                                bg-red-600
+                                text-white
+                              "
+                              href=""
+                              >Add to Cart</a
+                            >
+                          </div>
+                          <div
+                            @click="toggllee(index)"
+                            class="detail underline pt-4"
                           >
-                        </div>
-                        <div
-                          @click="toggllee(index)"
-                          class="detail underline pt-4"
-                        >
-                          <h1>Detay görüntüle</h1>
+                            <h1>Detay görüntüle</h1>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -356,140 +366,124 @@
                 </div>
               </div>
             </div>
-           
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <footer-template></footer-template>
+      </div>
+    </div>
+    <div
+      v-for="(product, index) in filteredproducts"
+      :key="index"
+      v-show="index === active"
+      :class="[isOpenPage ? 'show-mobile-page' : '']"
+      :id="index"
+      class="offcanvas-mobile-page"
+    >
+      <div @click="toggllee(index)" class="mobile-card-overlay"></div>
+      <div class="inner">
+        <div class="mobile-header">
+          <button
+            @click="toggllee(index)"
+            class="mobile-close-btn text-black"
+          ></button>
+        </div>
+        <div class="card-content flex">
+          <div class="container">
+            <div class="grid grid-cols-2">
+              <div class="left pb-5">
+                <div class="flex justify-center">
+                  <div
+                    id="app"
+                    class="slideshow-container flex flex-col items-center"
+                    v-show="index === active"
+                  >
+                    <div class="mySlide w-1/2">
+                      <div class="numbertext">{{ direction }}</div>
+                      <div class="numbertext">{{ eren }}</div>
+                      <img
+                        v-for="(src, index) in product.imgList"
+                        :key="src"
+                        :src="src"
+                        v-show="index === activee"
+                      />
+                    </div>
+                    <a class="prev" v-if="prev" @click="change(activee - 1)"
+                      >&#10094;</a
+                    >
+                    <a class="next" v-if="next" @click="change(activee + 1)"
+                      >&#10095;</a
+                    >
+                    <ul class="slider_dots">
+                      <li
+                        v-for="(src, index) in product.imgList"
+                        :key="src"
+                        :class="{ active: index === activee }"
+                        @click="change(index, product.imgList.length)"
+                      >
+                        {{ index }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                <div class="title pt-3 text-xl">
+                 {{ product.productName }} active: {{ active }} index:{{
+                    index
+                  }}
+                </div>
+                <div class="price pt-4 pb-10 text-red-700 italic">
+                  <h1>{{ product.productPrice }}</h1>
+                </div>
+                <div class="piece pb-10">
+                  <h1 class="text-sm pb-4">Adet</h1>
+                  <input
+                    type="number"
+                    value="1"
+                    class="
+                      px-3
+                      py-1.5
+                      text-base
+                      font-normal
+                      border border-solid border-gray-300
+                      transition
+                      ease-in-out
+                      m-0
+                      focus:text-gray-700
+                      focus:bg-white
+                      focus:border-blue-600
+                      focus:outline-none
+                      w-1/5
+                    "
+                  />
+                </div>
+                <div class="btn">
+                  <a
+                    class="
+                      inline-block
+                      py-3
+                      px-32
+                      text-sm
+                      hover:bg-red-300 hover:text-red-100
+                      bg-red-600
+                      text-white
+                    "
+                    href=""
+                    >Add to Cart</a
+                  >
+                </div>
+                <div @click="toggllee(index)" class="detail underline pt-4">
+                  <h1>Detay görüntüle</h1>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="footer">
-      <footer-template></footer-template>
-    </div>
-     
   </div>
-  <div
-              v-for="(product, index) in filteredproducts"
-              :key="index"
-              v-show="index === active"
-              :class="[isOpenPage ? 'show-mobile-page' : '']"
-              :id="index"
-              class="offcanvas-mobile-page"
-            >
-              <div @click="toggllee(index)" class="mobile-card-overlay"></div>
-              <div class="inner">
-                <div class="mobile-header">
-                  <button
-                    @click="toggllee(index)"
-                    class="mobile-close-btn text-black"
-                  ></button>
-                </div>
-                <div  class="card-content flex">
-                  <div class="container">
-                    <div class="grid grid-cols-2">
-                      <div class="left pb-5 ">
-                        <div   class="flex justify-center">
-                           <div
-                            id="app"
-                            class="
-                              slideshow-container
-                              flex flex-col
-                              items-center
-                              
-                            "
-                            v-show="index === active"
-                          >
-                            <div class="mySlide w-1/2">
-                              <div class="numbertext">{{ direction }}</div>
-                              <div class="numbertext">{{ eren }}</div>
-                              <img
-                                v-for="(src, index) in product.imgList"
-                                :key="src"
-                                :src="src"
-                                v-show="index === activee"
-                              />
-                            </div>
-                            <a
-                              class="prev"
-                              v-if="prev"
-                              @click="change(activee - 1)"
-                              >&#10094;</a
-                            >
-                            <a
-                              class="next"
-                              v-if="next"
-                              @click="change(activee + 1)"
-                              >&#10095;</a
-                            >
-                            <ul class="slider_dots">
-                              <li
-                                 v-for="(src, index) in product.imgList"
-                                :key="src"
-                                :class="{ active: index === activee }"
-                                @click="change(index,product.imgList.length)"
-                                
-                              >
-                                {{ index }}
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                       
-                      </div>
-                      <div class="right">
-                        <div class="title pt-3 text-xl">
-                          {{ product.productName }} active: {{active}} index:{{index}}
-                        </div>
-                        <div class="price pt-4 pb-10 text-red-700 italic">
-                          <h1>{{ product.productPrice }}</h1>
-                        </div>
-                        <div class="piece pb-10">
-                          <h1 class="text-sm pb-4">Adet</h1>
-                          <input
-                            type="number"
-                            value="1"
-                            class="
-                              px-3
-                              py-1.5
-                              text-base
-                              font-normal
-                              border border-solid border-gray-300
-                              transition
-                              ease-in-out
-                              m-0
-                              focus:text-gray-700
-                              focus:bg-white
-                              focus:border-blue-600
-                              focus:outline-none
-                              w-1/5
-                            "
-                          />
-                        </div>
-                        <div class="btn">
-                          <a 
-                            class="
-                              inline-block
-                              py-3
-                              px-32
-                              text-sm
-                              hover:bg-red-300 hover:text-red-100
-                              bg-red-600
-                              text-white
-                            "
-                            href=""
-                            >Add to Cart</a
-                          >
-                        </div>
-                        <div @click="toggllee(index)"  class="detail underline pt-4">
-                          
-                          <h1>Detay görüntüle</h1>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-</div>
-  
 </template>
 <script>
 export default {
@@ -502,7 +496,7 @@ export default {
       min: 25,
       max: 550,
       minValue: 25,
-      eren:100,
+      
       maxValue: 550,
       step: 25,
       totalSteps: 0,
@@ -512,7 +506,7 @@ export default {
       pos: {
         curTrack: null,
       },
-      priceFilter: [],
+      
       modelFilter: [],
       sizeFilter: [],
       active: 0,
@@ -549,14 +543,13 @@ export default {
           imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
-           
           ],
         },
         {
           id: 3,
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı iphone xs large",
-          productPrice: "395,00₺",
+          productPrice: 250,
           bestSell: false,
           model: "iphone xs",
           size: "large",
@@ -565,7 +558,7 @@ export default {
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
-             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -574,7 +567,7 @@ export default {
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı iphone xs medium",
-          productPrice: "395,00₺",
+          productPrice: 300,
           bestSell: true,
           model: "iphone xs",
           size: "medium",
@@ -588,7 +581,7 @@ export default {
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı",
-          productPrice: "395,00₺",
+          productPrice: 350,
           bestSell: false,
           imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -600,7 +593,7 @@ export default {
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı",
-          productPrice: "395,00₺",
+          productPrice: 400,
           bestSell: true,
           imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -612,7 +605,7 @@ export default {
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı",
-          productPrice: "395,00₺",
+          productPrice: 450,
           bestSell: false,
           imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -624,7 +617,7 @@ export default {
         {
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı",
-          productPrice: "395,00₺",
+          productPrice: 500,
           bestSell: false,
           imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -636,7 +629,7 @@ export default {
         {
           img: require("~/assets/image/ea71bb_a098804073f8481dab7214af6904a585_mv2_d_4601_3315_s_4_2.webp"),
           productName: "Evcil Hayvan Yatağı",
-          productPrice: "395,00₺",
+          productPrice: 550,
           bestSell: false,
           imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -653,20 +646,19 @@ export default {
     };
   },
   methods: {
-    change(index,length) {
-      
+    
+
+    change(index, length) {
       this.activee = (index + length) % length;
     },
     toggle(index) {
       this.isOpenCard = !this.isOpenCard;
       this.active = (index + this.total) % this.total;
-      this.activee = 0
-      
+      this.activee = 0;
     },
     toggllee(index) {
       this.isOpenPage = !this.isOpenPage;
       this.active = (index + this.total) % this.total;
-      
     },
 
     moveTrack(track, ev) {
@@ -765,19 +757,22 @@ export default {
       const priceFilter = this.priceFilter;
       const modelFilter = this.modelFilter;
       const sizeFilter = this.sizeFilter;
+     
       
+     
+       
+      
+      
+     
+     
 
-      if (modelFilter.length || sizeFilter.length || priceFilter.length) {
+      if (modelFilter.length && sizeFilter.length) {
         return this.products.filter(function (product) {
           return (
-            modelFilter.includes(product.model) ||
-            sizeFilter.includes(product.size) ||
-            priceFilter.includes(product.productPrice)
+            modelFilter.includes(product.model) &&
+            sizeFilter.includes(product.size) 
+            
           );
-        });
-      } else if (priceFilter.length) {
-        return this.products.filter(function (product) {
-          return priceFilter.includes(product.productPrice);
         });
       } else if (modelFilter.length) {
         return this.products.filter(function (product) {
@@ -794,10 +789,11 @@ export default {
     total() {
       return this.filteredproducts.length;
     },
-     
   },
 
   mounted() {
+     
+      
     // calc per step value
     this.totalSteps = (this.max - this.min) / this.step;
 
