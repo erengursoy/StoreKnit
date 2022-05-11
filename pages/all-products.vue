@@ -1,5 +1,6 @@
 <template>
-  <div id="all-products">
+<div>
+  <div :class="[isOpenPage ? 'hidden' : '']" id="all-products">
     <div class="header">
       <header-template></header-template>
     </div>
@@ -71,7 +72,8 @@
               <hr class="w-44" />
               <div v-show="showPrice">
                 <div class="pt-12 pb-6">
-                  <div class="track-container w-7/12 lg:w-4/5">
+                  <div  class="track-container w-7/12 lg:w-4/5">
+                 
                     <span class="range-value min -ml-4"
                       >{{ minValue + ",00₺" }}
                     </span>
@@ -170,13 +172,11 @@
           <div class="right col-span-1 lg:col-span-4">
             <div class="grid grid-cols-1 lg:grid-cols-4">
               <div
-
                 v-bind:id="product.id"
                 v-for="(product, index) in filteredproducts"
-                
                 class="card p-7 text-center relative"
               >
-                <div  class="img relative">
+                <div class="img relative">
                   <img class="w-full" :src="product.img" alt="" />
                   <div
                     v-if="product.bestSell"
@@ -199,9 +199,6 @@
                 </div>
 
                 <div
-                
-                
-                 
                   @click="toggle(index)"
                   v-bind:id="product.id"
                   class="
@@ -224,7 +221,11 @@
                 </div>
 
                 <div class="title pt-3">
-                  <h1>{{ product.productName }} active: {{active}} index:{{index}}</h1>
+                  <h1>
+                    {{ product.productName }} active: {{ active }} index:{{
+                      index
+                    }}
+                  </h1>
                 </div>
                 <div class="text pt-1 text-red-700 italic">
                   <h1>{{ product.productPrice }}</h1>
@@ -250,16 +251,58 @@
                 <div class="card-content flex">
                   <div class="container">
                     <div class="grid grid-cols-2">
-                      <div class="left pb-5 ">
-                        <div   class="flex justify-center">
-                           <app-slider :eren="index"   v-for="(product, index) in products"  v-show="index === active"  :data="product.imgList"></app-slider>
-                          
+                      <div class="left pb-5">
+                        <div class="flex justify-center">
+                          <div
+                            id="app"
+                            class="
+                              slideshow-container
+                              flex flex-col
+                              items-center
+                              
+                            "
+                            v-show="index === active"
+                          >
+                            <div class="mySlide w-1/2">
+                              <div class="numbertext">{{ direction }}</div>
+                              <div class="numbertext">{{ eren }}</div>
+                              <img
+                                v-for="(src, index) in product.imgList"
+                                :key="src"
+                                :src="src"
+                                v-show="index === activee"
+                              />
+                            </div>
+                            <a
+                              class="prev"
+                              v-if="prev"
+                              @click="change(activee - 1)"
+                              >&#10094;</a
+                            >
+                            <a
+                              class="next"
+                              v-if="next"
+                              @click="change(activee + 1)"
+                              >&#10095;</a
+                            >
+                            <ul class="slider_dots">
+                              <li
+                                 v-for="(src, index) in product.imgList"
+                                :key="src"
+                                :class="{ active: index === activee }"
+                                @click="change(index,product.imgList.length)"
+                                
+                              >
+                                {{ index }}
+                              </li>
+                            </ul>
+                          </div>
                         </div>
-                       
                       </div>
                       <div class="right">
                         <div class="title pt-3 text-xl">
-                          {{ product.productName }} active: {{active}} index:{{index}}
+                          {{ product.productName }} active:
+                          {{ active }} index:{{ index }}
                         </div>
                         <div class="price pt-4 pb-10 text-red-700 italic">
                           <h1>{{ product.productPrice }}</h1>
@@ -301,8 +344,10 @@
                             >Add to Cart</a
                           >
                         </div>
-                       <div @click="toggllee(index)"  class="detail underline pt-4">
-                          
+                        <div
+                          @click="toggllee(index)"
+                          class="detail underline pt-4"
+                        >
                           <h1>Detay görüntüle</h1>
                         </div>
                       </div>
@@ -311,7 +356,17 @@
                 </div>
               </div>
             </div>
-             <div
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <footer-template></footer-template>
+    </div>
+     
+  </div>
+  <div
               v-for="(product, index) in filteredproducts"
               :key="index"
               v-show="index === active"
@@ -319,11 +374,11 @@
               :id="index"
               class="offcanvas-mobile-page"
             >
-              <div @click="toggllee" class="mobile-card-overlay"></div>
+              <div @click="toggllee(index)" class="mobile-card-overlay"></div>
               <div class="inner">
                 <div class="mobile-header">
                   <button
-                    @click="toggllee"
+                    @click="toggllee(index)"
                     class="mobile-close-btn text-black"
                   ></button>
                 </div>
@@ -332,7 +387,50 @@
                     <div class="grid grid-cols-2">
                       <div class="left pb-5 ">
                         <div   class="flex justify-center">
-                           <app-slider v-show="index === active" :data="product.imgList"></app-slider>
+                           <div
+                            id="app"
+                            class="
+                              slideshow-container
+                              flex flex-col
+                              items-center
+                              
+                            "
+                            v-show="index === active"
+                          >
+                            <div class="mySlide w-1/2">
+                              <div class="numbertext">{{ direction }}</div>
+                              <div class="numbertext">{{ eren }}</div>
+                              <img
+                                v-for="(src, index) in product.imgList"
+                                :key="src"
+                                :src="src"
+                                v-show="index === activee"
+                              />
+                            </div>
+                            <a
+                              class="prev"
+                              v-if="prev"
+                              @click="change(activee - 1)"
+                              >&#10094;</a
+                            >
+                            <a
+                              class="next"
+                              v-if="next"
+                              @click="change(activee + 1)"
+                              >&#10095;</a
+                            >
+                            <ul class="slider_dots">
+                              <li
+                                 v-for="(src, index) in product.imgList"
+                                :key="src"
+                                :class="{ active: index === activee }"
+                                @click="change(index,product.imgList.length)"
+                                
+                              >
+                                {{ index }}
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                        
                       </div>
@@ -390,15 +488,8 @@
                 </div>
               </div>
             </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer">
-      <footer-template></footer-template>
-    </div>
-  </div>
+</div>
+  
 </template>
 <script>
 export default {
@@ -411,6 +502,7 @@ export default {
       min: 25,
       max: 550,
       minValue: 25,
+      eren:100,
       maxValue: 550,
       step: 25,
       totalSteps: 0,
@@ -424,18 +516,21 @@ export default {
       modelFilter: [],
       sizeFilter: [],
       active: 0,
-      index:0,
+      activee: 0,
+      index: 0,
       products: [
-       {
+        {
           id: 1,
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı iphone x medium",
-          productPrice: "395",
+          productPrice: 100,
           bestSell: false,
           model: "iphone x",
           size: "medium",
           card: false,
           imgList: [
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -446,7 +541,7 @@ export default {
           id: 2,
           img: require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (2).webp"),
           productName: "Evcil Hayvan Yatağı iphone x medium",
-          productPrice: "395,00₺",
+          productPrice: 200,
           bestSell: false,
           model: "iphone x",
           size: "medium",
@@ -454,8 +549,7 @@ export default {
           imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
-            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
-            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+           
           ],
         },
         {
@@ -471,6 +565,10 @@ export default {
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
+            require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
           ],
         },
         {
@@ -480,7 +578,7 @@ export default {
           bestSell: true,
           model: "iphone xs",
           size: "medium",
-           imgList: [
+          imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -504,7 +602,7 @@ export default {
           productName: "Evcil Hayvan Yatağı",
           productPrice: "395,00₺",
           bestSell: true,
-           imgList: [
+          imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -516,7 +614,7 @@ export default {
           productName: "Evcil Hayvan Yatağı",
           productPrice: "395,00₺",
           bestSell: false,
-         imgList: [
+          imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -528,7 +626,7 @@ export default {
           productName: "Evcil Hayvan Yatağı",
           productPrice: "395,00₺",
           bestSell: false,
-         imgList: [
+          imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -540,7 +638,7 @@ export default {
           productName: "Evcil Hayvan Yatağı",
           productPrice: "395,00₺",
           bestSell: false,
-         imgList: [
+          imgList: [
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
             require("~/assets/image/0edf2e_8b439b9a666f46ada77455df9c5fa623_mv2 (3).webp"),
@@ -548,7 +646,6 @@ export default {
           ],
         },
       ],
-       
 
       filter: [],
       isOpenCard: false,
@@ -556,20 +653,20 @@ export default {
     };
   },
   methods: {
+    change(index,length) {
+      
+      this.activee = (index + length) % length;
+    },
     toggle(index) {
       this.isOpenCard = !this.isOpenCard;
-       this.active = (index + this.total) % this.total;
-      
-     
+      this.active = (index + this.total) % this.total;
+      this.activee = 0
       
     },
-     toggllee(index) {
+    toggllee(index) {
       this.isOpenPage = !this.isOpenPage;
-       this.active = (index + this.total) % this.total;
-     
+      this.active = (index + this.total) % this.total;
       
-      
-     
     },
 
     moveTrack(track, ev) {
@@ -668,15 +765,14 @@ export default {
       const priceFilter = this.priceFilter;
       const modelFilter = this.modelFilter;
       const sizeFilter = this.sizeFilter;
-       
-      
       
 
-      if (modelFilter.length && sizeFilter.length) {
+      if (modelFilter.length || sizeFilter.length || priceFilter.length) {
         return this.products.filter(function (product) {
           return (
-            modelFilter.includes(product.model) &&
-            sizeFilter.includes(product.size)
+            modelFilter.includes(product.model) ||
+            sizeFilter.includes(product.size) ||
+            priceFilter.includes(product.productPrice)
           );
         });
       } else if (priceFilter.length) {
@@ -692,13 +788,13 @@ export default {
           return sizeFilter.includes(product.size);
         });
       } else {
-        return this.products ;
+        return this.products;
       }
     },
     total() {
-      return this.filteredproducts.length ;
+      return this.filteredproducts.length;
     },
-    
+     
   },
 
   mounted() {
@@ -853,7 +949,6 @@ export default {
   align-items: center;
   display: flex;
   justify-content: end;
-  
 
   padding: 20px 15px 20px 30px;
 }
@@ -885,7 +980,6 @@ export default {
   transform: none;
   right: 225px;
 }
-
 
 .offcanvas-mobile-card .inner {
   position: absolute;
@@ -970,7 +1064,6 @@ export default {
   align-items: center;
   display: flex;
   justify-content: end;
-  
 
   padding: 20px 15px 20px 30px;
 }
@@ -1070,5 +1163,89 @@ export default {
 
 .offcanvas-mobile-page .inner .mobile-header .mobile-close-btn:after {
   transform: rotate(45deg);
+}
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+.prev,
+.next a {
+  text-decoration: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  color: white;
+}
+
+.slider_dots {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-top: 10px;
+  list-style: none;
+  font-size: 0;
+  text-align: center;
+}
+
+.slider_dots > li {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #bbb;
+}
+.slider_dots > li:hover {
+  background-color: #717171;
+}
+.slider_dots > .active {
+  background-color: #717171;
+}
+
+.slider_dots > li > button:before {
+  font-size: 20px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: "•";
+  text-align: center;
+  opacity: 0.25;
+  color: black;
+}
+
+.slider_dots > li > button:hover:before,
+.slider_dots > li.active > button:before {
+  opacity: 1;
 }
 </style>

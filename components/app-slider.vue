@@ -1,9 +1,9 @@
 
 <template>
-  <div id="app" class="slideshow-container flex flex-col items-center ">
+  <div id="app" class="slideshow-container flex flex-col items-center">
     <div class="mySlide w-1/2">
-       <div class="numbertext">{{direction}}</div>
-       <div class="numbertext">{{eren}}</div>
+      <div class="numbertext">{{ direction }}</div>
+      <div class="numbertext">{{ eren }}</div>
       <img
         v-for="(src, index) in data"
         :key="src"
@@ -13,8 +13,13 @@
     </div>
     <a class="prev" v-if="prev" @click="change(active - 1)">&#10094;</a>
     <a class="next" v-if="next" @click="change(active + 1)">&#10095;</a>
-    <ul  class="slider_dots">
-      <li  v-for="(src,index) in data" :key="index" :class="{active:index === active}" @click="change(index)">
+    <ul class="slider_dots">
+      <li
+        v-for="(src, index) in data"
+        :key="index"
+        :class="{ active: index === active }"
+        @click="change(index)"
+      >
         {{ index }}
       </li>
     </ul>
@@ -24,24 +29,20 @@
 <script>
 export default {
   el: "#app",
-  props:{
-    data:{default: () => []},
-    eren:{default: {}},
-    prev:{
-      default:false,
+  props: {
+    data: { default: () => [] },
+    eren: { default: {} },
+    prev: {
+      default: false,
     },
-    next:{
-      default:false,
-    }
-    
+    next: {
+      default: false,
+    },
   },
   data: function () {
     return {
       active: 0,
-     direction: 1,
-     
-
-      
+      direction: 1,
     };
   },
   computed: {
@@ -51,10 +52,8 @@ export default {
   },
   methods: {
     change(index) {
-      
-      this.direction = (index + this.total) %this.total +1;
+      this.direction = ((index + this.total) % this.total) + 1;
       this.active = (index + this.total) % this.total;
-     
     },
   },
 };
@@ -108,7 +107,6 @@ img {
   color: white;
 }
 
-
 .slider_dots {
   display: block;
   width: 100%;
@@ -121,23 +119,21 @@ img {
 
 .slider_dots > li {
   position: relative;
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    padding: 0;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: #bbb;
-
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #bbb;
 }
-.slider_dots > li:hover{
-   background-color: #717171;
+.slider_dots > li:hover {
+  background-color: #717171;
 }
-.slider_dots > .active{
-   background-color: #717171;
+.slider_dots > .active {
+  background-color: #717171;
 }
-
 
 .slider_dots > li > button:before {
   font-size: 20px;
@@ -147,7 +143,7 @@ img {
   left: 0;
   width: 20px;
   height: 20px;
-  content: '•';
+  content: "•";
   text-align: center;
   opacity: 0.25;
   color: black;
