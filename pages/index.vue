@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home">
     <div class="header">
        <header-template></header-template>
     </div>
@@ -12,7 +12,7 @@
       />
     </div>
     <div class="most-loved">
-      <div class="title text-center mt-14 ml-4 text-2xl font-bold">
+      <div class="title text-center mt-14 ml-4 text-2xl font-semibold text-page-black">
         <h1 class="tracking-widest">EN SEVİLENLER</h1>
         <div class="w-5 h-3px bg-black inline-flex"></div>
       </div>
@@ -23,14 +23,14 @@
             inline-block
             py-5
             px-16
-            text-sm
-            border border-red-600
-            text-red-600
-            hover:bg-red-600 hover:text-white
+            text-base
+            border border-page-red
+            text-page-red
+            hover:bg-page-red hover:text-white 
             duration-300
           "
           href=""
-          >TÜM ÇANTALAR</a
+          >Tüm Çantalar</a
         >
       </div>
     </div>
@@ -53,22 +53,26 @@
                     py-3
                     px-24
                     text-sm
-                    border border-red-600
-                    text-red-600
-                    hover:bg-red-600 hover:text-white
+                    border border-page-red
+                    text-page-red
+                    
                     duration-300
                   "
                   href=""
-                  >TÜM ÇANTALAR</a
+                  > <h1 class="hover:opacity-75">Add to Cart</h1></a
                 >
               </div>
               <div id="left-description" class="description duration-500">
                 <div class="title text-center">
-                  <h1 class="pt-5">AHŞAP SAPLI KOL ÇANTASI</h1>
+                  <h1 class="pt-5 
+                    text-page-black
+                    font-light">Ahşap Saplı Kol Çantası</h1>
                 </div>
                 <div class="text text-center">
-                  <h1 class="pt-4 mr-2 text-red-700">
-                    <span class="line-through mr-2">645,00₺</span>350,00₺
+                  <h1 class="pt-4 mr-2 text-xl text-page-red font-extralight
+                    Poppins-SemiBold
+                    italic">
+                    <span class="line-through mr-2 decoration-1">645,00₺</span>350,00₺
                   </h1>
                 </div>
               </div>
@@ -153,22 +157,24 @@
                     py-3
                     px-24
                     text-sm
-                    border border-red-600
-                    text-red-600
-                    hover:bg-red-600 hover:text-white
+                    border border-page-red
+                    text-page-red
                     duration-300
                   "
                   href=""
-                  >TÜM ÇANTALAR</a
+                  ><h1 class="hover:opacity-75">Add to Cart</h1></a
                 >
               </div>
               <div id="right-description" class="description duration-500">
                 <div class="title text-center">
-                  <h1 class="pt-5">AHŞAP SAPLI KOL ÇANTASI</h1>
+                  <h1 class="pt-5 text-page-black
+                    font-light">Evcil Hayvan Yatağı</h1>
                 </div>
                 <div class="text text-center">
-                  <h1 class="pt-4 mr-2 text-red-700">
-                    <span class="line-through mr-2">645,00₺</span>350,00₺
+                  <h1 class="pt-4 mr-2 text-xl text-page-red font-extralight
+                    Poppins-SemiBold
+                    italic">
+                    395,00₺
                   </h1>
                 </div>
               </div>
@@ -353,10 +359,12 @@
       -->
     </div>
     <div class="follow-us bg-our-models-card">
-      <div class="title text-center text-2xl font-bold">
+      <div class="title text-center text-2xl font-semibold text-page-black">
         <h1 class="tracking-widest pt-28">BİZİ TAKİP EDİN</h1>
       </div>
-      <div class="link text-center text-xl mt-5 pb-12 text-red-700 italic">
+      <div class="link text-center text-2xl mt-5 pb-12 tracking-wide text-page-red font-extralight
+                    Poppins-SemiBold
+                    italic">
         <a href="">@knitpett</a>
       </div>
       <div class="container mx-0">
@@ -412,21 +420,27 @@
         <div class="grid lg:grid-cols-3 grid-cols-1 py-12">
           <div class="title text-center pt-4 lg:pt-0">
             <div class="horizontal pb-3">
-              <div class="w-5 h-3px bg-red-700 inline-flex"></div>
+              <div class="w-5 h-3px bg-page-red inline-flex"></div>
             </div>
-            <h1 class="text-2xl text-red-700 italic">Worldwide shipping</h1>
+            <h1 class="text-3xl text-page-red font-extralight
+                    Poppins-SemiBold
+                    italic">Worldwide shipping</h1>
           </div>
           <div class="title text-center pt-4 lg:pt-0">
             <div class="horizontal pb-3">
-              <div class="w-5 h-3px bg-red-700 inline-flex"></div>
+              <div class="w-5 h-3px bg-page-red inline-flex"></div>
             </div>
-            <h1 class="text-2xl text-red-700 italic">Easy 30 day returns</h1>
+            <h1 class="text-3xl text-page-red font-extralight
+                    Poppins-SemiBold
+                    italic">Easy 30 day returns</h1>
           </div>
           <div class="title text-center pt-4 lg:pt-0">
             <div class="horizontal pb-3">
-              <div class="w-5 h-3px bg-red-700 inline-flex"></div>
+              <div class="w-5 h-3px bg-page-red inline-flex"></div>
             </div>
-            <h1 class="text-2xl text-red-700 italic">12 month warranty</h1>
+            <h1 class="text-3xl text-page-red font-extralight
+                    Poppins-SemiBold
+                    italic">12 month warranty</h1>
           </div>
         </div>
       </div>
@@ -438,9 +452,9 @@
 </template>
 
 <script>
-import header from '../components/header-template.vue';
+import headerTemplate from '../components/header-template.vue';
 export default {
-  components: { header },
+  components: { headerTemplate },
   data() {
     return {
      

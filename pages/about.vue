@@ -3,7 +3,7 @@
    <div class="header">
        <header-template></header-template>
     </div>
-    <div class="title text-center py-16 text-4xl font-bold tracking-widest">
+    <div class="title text-center py-16 text-4xl text-page-black font-bold tracking-widest">
       <h1 class="">HAKKIMIZDA</h1>
     </div>
     <div class="flex flex-wrap">
@@ -12,7 +12,8 @@
           <div class="w-5 h-3px bg-black inline-flex"></div>
         </div>
 
-        <div class="title text-center leading-loose">
+        <div class="title text-center leading-loose text-page-black
+                    font-light">
           <p>
             Biz bu yola, gerçek anlamda bileğimizin hakkı ile çıktık.
             Başlangıçta, yalnızca evcil<br />

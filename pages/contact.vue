@@ -3,11 +3,11 @@
     <div class="header">
        <header-template></header-template>
     </div>
-    <div class="title text-center py-16 text-4xl font-bold tracking-widest">
+    <div class="title text-center py-16 text-4xl font-bold tracking-widest text-page-black">
       <h1 class="">BİZE ULAŞIN</h1>
     </div>
     <div class="bg-our-models-card py-16">
-      <div class="title text-center py-5 text-2xl font-bold tracking-widest">
+      <div class="title text-center py-5 text-2xl font-bold tracking-widest text-page-black">
         Bir tık uzağınızdayız.
       </div>
       <div class="horizantal text-center pb-12">
@@ -15,10 +15,13 @@
       </div>
       <div class="description flex justify-center flex-col lg:flex-row">
         <div class="first pt-9 lg:pt-0 pr-0 lg:pr-40 text-center">
-          <div class="title text-2xl italic text-red-700 pb-3">
+          <div class="title text-3xl text-page-red font-extralight
+                    Poppins-SemiBold
+                    italic pb-3">
             <h1>Sosyal Medya</h1>
           </div>
-          <div class="text leading-loose">
+          <div class="text leading-loose text-page-black
+                    font-light">
             <p class="">
               500 Terry Francois St.<br />
               San Francisco, CA 94158
@@ -26,10 +29,13 @@
           </div>
         </div>
         <div class="second pt-9 lg:pt-0 pr-0 lg:pr-40 text-center">
-          <div class="title text-2xl italic text-red-700 pb-3">
+          <div class="title text-3xl text-page-red font-extralight
+                    Poppins-SemiBold
+                    italic pb-3">
             <h1>Telefon</h1>
           </div>
-          <div class="text leading-loose">
+          <div class="text leading-loose text-page-black
+                    font-light">
             <p class="">
               Monday-Friday<br />
 
@@ -38,10 +44,13 @@
           </div>
         </div>
         <div class="third pt-9 lg:pt-0 text-center">
-          <div class="title text-2xl italic text-red-700 pb-3">
+          <div class="title text-3xl text-page-red font-extralight
+                    Poppins-SemiBold
+                    italic pb-3">
             <h1>Sosyal Medya</h1>
           </div>
-          <div class="text leading-loose">
+          <div class="text leading-loose text-page-black
+                    font-light">
             <p class="">
               1-800-000-0000<br />
               info@mysite.com

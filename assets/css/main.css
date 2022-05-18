@@ -1,8 +1,40 @@
 @tailwind base;
+.Poppins-SemiBold {
+    font-family: "Poppins-SemiBold";
+    font-weight: 200;
+}
+
+@tailwind base;
+.AvenirLTStd-Book {
+    font-family: "AvenirLTStd-Book";
+    color: rgb(17, 17, 17);
+    font-weight: 200;
+}
+
 @tailwind components;
 @tailwind utilities;
+.decoration-1 {
+    text-decoration-thickness: 1px;
+}
+
 .brightness-07 {
     filter: brightness(0.7);
+}
+
+.track-container-width {
+    width: calc(100% - 20px);
+}
+
+.quick-view-width {
+    width: calc(100% - 55px);
+}
+
+.card-btn-width {
+    width: calc(80%);
+}
+
+.card-inner-right {
+    right: calc(17%);
 }
 
 @media screen and (max-width:1024px) {

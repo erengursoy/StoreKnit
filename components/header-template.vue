@@ -77,14 +77,14 @@
         </div>
       </div>
       <div class="logo mt-5">
-        <h1 class="text-center italic text-4xl text-red-700">StoreKnit</h1>
+        <h1 class="text-center italic text-4xl text-page-red">StoreKnit</h1>
       </div>
     </div>
     <div class="menu hidden lg:block">
       <div class="container mx-auto">
         <div class="grid grid-cols-3">
           <div class="logo mt-5 col-start-2 float-right">
-            <h1 class="text-center italic text-5xl text-red-700">StoreKnit</h1>
+            <h1 class="text-center text-5xl text-page-red Poppins-SemiBold italic">StoreKnit</h1>
           </div>
           <div class="social-media flex justify-end mt-8">
             <div class="facebook mr-2">
@@ -101,9 +101,9 @@
         </div>
       </div>
 
-      <div class="menu-item">
-        <ul class="flex justify-center mt-12 mb-8">
-          <li class="mr-24"><a href="/index">Anasayfa</a></li>
+      <div class="menu-item text-page-black font-light">
+        <ul class="flex justify-center pt-12 pb-8">
+          <li class="mr-24"><a href="/#home">Anasayfa</a></li>
           <li class="mr-24"><a href="/all-products">Tüm Ürünler</a></li>
           <li class="mr-24"><a href="/about">Hakkımızda</a></li>
           <li><a href="/contact">İletişim</a></li>

@@ -1,11 +1,11 @@
 @font-face {
-    font-family: "MostraNuova-Bold";
-    src: local("MostraNuova-Bold"), url(~assets/font/FontsFree-Net-aa.ttf) format("truetype");
+    font-family: "Poppins-SemiBold";
+    src: local("Poppins-SemiBold"), url(~assets/font/Poppins-SemiBold.ttf) format("truetype");
 }
 
 @font-face {
-    font-family: "Helvetica";
-    src: local("Helvetica"), url(~assets/font/Helvetica-Bold.ttf) format("truetype");
+    font-family: "AvenirLTStd-Book";
+    src: local("AvenirLTStd-Book"), url(~assets/font/AvenirLTStd-Book.otf) format("truetype");
 }
 
 .footer-icons-shadow {
